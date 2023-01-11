@@ -1,8 +1,9 @@
 package transport;
 import driver.Driver;
 import driver.DriverLicenseException;
-
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public abstract class Transport<T> implements Competing {
     private final String brand;
@@ -11,10 +12,13 @@ public abstract class Transport<T> implements Competing {
 
     private Mechanic mechanic;
 
-    private final ArrayList<Mechanic> mechanics = new ArrayList<>();
+    private final Map<Transport, Mechanic> mechanicMap = new HashMap<>();
 
     public void addMechanic(Mechanic mechanic){
-        mechanics.add(mechanic);
+        if (!mechanicMap.containsValue(mechanic)){
+            mechanicMap.remove(Transport.this, mechanic);
+        }
+        mechanicMap.put(Transport.this, mechanic);
     }
 
     public Transport(String brand, String model, double engineVolume) {

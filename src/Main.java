@@ -1,10 +1,9 @@
 import driver.*;
-import transport.Bus;
-import transport.Car;
-import transport.Mechanic;
-import transport.Trucks;
+import transport.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws NullPointerException, DriverLicenseException {
@@ -28,6 +27,9 @@ public class Main {
         Driver db1 = new DriverD("NameBus1", Driver.DriverLicense.D);
         Driver db2 = new DriverD("NameBus2", Driver.DriverLicense.D);
 
+        Mechanic m1 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
+        Mechanic m2 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
+
         ArrayList<Car> cars = new ArrayList<>();
         cars.add(c1);
         cars.add(c2);
@@ -47,7 +49,5 @@ public class Main {
         drivers.add(dt2);
         drivers.add(db1);
         drivers.add(db2);
-
-        System.out.println(c1);
     }
 }
