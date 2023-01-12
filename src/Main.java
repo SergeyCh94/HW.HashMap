@@ -29,25 +29,13 @@ public class Main {
 
         Mechanic m1 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
         Mechanic m2 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
+        Mechanic m3 = new Mechanic("NameMechanic2", Mechanic.CarCategory.TRUCK);
+        Mechanic m4 = new Mechanic("NameMechanic3", Mechanic.CarCategory.BUS);
 
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(c1);
-        cars.add(c2);
+        Map<Transport, Mechanic> mechanics = new HashMap<>();
+        mechanics.put(c1, m1);
+        mechanics.put(t1, m3);
 
-        ArrayList<Trucks> trucks = new ArrayList<>();
-        trucks.add(t1);
-        trucks.add(t2);
 
-        ArrayList<Bus> buses = new ArrayList<>();
-        buses.add(b1);
-        buses.add(b2);
-
-        ArrayList<Driver> drivers = new ArrayList<>();
-        drivers.add(dc1);
-        drivers.add(dc2);
-        drivers.add(dt1);
-        drivers.add(dt2);
-        drivers.add(db1);
-        drivers.add(db2);
     }
 }

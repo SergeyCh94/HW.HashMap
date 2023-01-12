@@ -4,6 +4,7 @@ import driver.DriverLicenseException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public abstract class Transport<T> implements Competing {
     private final String brand;
@@ -12,13 +13,17 @@ public abstract class Transport<T> implements Competing {
 
     private Mechanic mechanic;
 
-    private final Map<Transport, Mechanic> mechanicMap = new HashMap<>();
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Double.compare(transport.engineVolume, engineVolume) == 0 && brand.equals(transport.brand) && model.equals(transport.model) && mechanic.equals(transport.mechanic);
+    }
 
-    public void addMechanic(Mechanic mechanic){
-        if (!mechanicMap.containsValue(mechanic)){
-            mechanicMap.remove(Transport.this, mechanic);
-        }
-        mechanicMap.put(Transport.this, mechanic);
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume, mechanic);
     }
 
     public Transport(String brand, String model, double engineVolume) {
