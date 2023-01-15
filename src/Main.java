@@ -1,10 +1,9 @@
 import driver.*;
-import transport.Bus;
-import transport.Car;
-import transport.Mechanic;
-import transport.Trucks;
+import transport.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) throws NullPointerException, DriverLicenseException {
@@ -28,26 +27,15 @@ public class Main {
         Driver db1 = new DriverD("NameBus1", Driver.DriverLicense.D);
         Driver db2 = new DriverD("NameBus2", Driver.DriverLicense.D);
 
-        ArrayList<Car> cars = new ArrayList<>();
-        cars.add(c1);
-        cars.add(c2);
+        Mechanic m1 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
+        Mechanic m2 = new Mechanic("NameMechanic1", Mechanic.CarCategory.CAR);
+        Mechanic m3 = new Mechanic("NameMechanic2", Mechanic.CarCategory.TRUCK);
+        Mechanic m4 = new Mechanic("NameMechanic3", Mechanic.CarCategory.BUS);
 
-        ArrayList<Trucks> trucks = new ArrayList<>();
-        trucks.add(t1);
-        trucks.add(t2);
+        Map<Transport, Mechanic> mechanics = new HashMap<>();
+        mechanics.put(c1, m1);
+        mechanics.put(t1, m3);
 
-        ArrayList<Bus> buses = new ArrayList<>();
-        buses.add(b1);
-        buses.add(b2);
 
-        ArrayList<Driver> drivers = new ArrayList<>();
-        drivers.add(dc1);
-        drivers.add(dc2);
-        drivers.add(dt1);
-        drivers.add(dt2);
-        drivers.add(db1);
-        drivers.add(db2);
-
-        System.out.println(c1);
     }
 }
